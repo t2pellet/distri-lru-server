@@ -1,4 +1,4 @@
-import express, { Request } from 'express';
+import express, { Request, Response } from 'express';
 import cache from './cache';
 import { body, param } from 'express-validator';
 import validate from './validate';
@@ -7,7 +7,7 @@ const routes = express.Router();
 const innerRoutes = express.Router({ mergeParams: true });
 routes.use('/:key', param('key').isAlpha(), validate, innerRoutes);
 
-innerRoutes.get('/', async (req: Request, res) => {
+innerRoutes.get('/', async (req: Request, res: Response) => {
   const value = await cache.get(req.params.key);
   res.status(200).send({ value });
 });
