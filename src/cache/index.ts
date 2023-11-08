@@ -1,6 +1,6 @@
 import { Redis } from 'ioredis';
-import { CACHE_PREFIX, REDIS_PORT } from '@/env';
-import { LRUCache } from '@/cache/lrucache';
+import { CACHE_PREFIX, REDIS_PORT } from '../env';
+import { LRUCache } from './lrucache';
 
 const redis = new Redis({ port: REDIS_PORT });
 const cache = new LRUCache(redis, CACHE_PREFIX);

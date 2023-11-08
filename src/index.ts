@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import routes from './routes';
 import { ValidateError } from './validate';
-import { PUBLIC_PORT } from '@/env';
+import { PUBLIC_PORT } from './env';
 
 // Setup
 const app = express();

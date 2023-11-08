@@ -1,6 +1,6 @@
 import { Redis } from 'ioredis';
 import TestRedis from 'ioredis-mock';
-import { BROKER_HOST, BROKER_PORT } from '@/env';
+import { BROKER_HOST, BROKER_PORT } from './env';
 
 export function getSubscriber() {
   let redis: Redis;

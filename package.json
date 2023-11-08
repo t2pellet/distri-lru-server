@@ -7,10 +7,9 @@
   "description": "Redis server client for use with distri-lru library",
   "main": "src/index.ts",
   "scripts": {
-    "start": "node build/src/main.js",
+    "start": "node dist/index.js",
     "prebuild": "yarn lint",
-    "build": "tsc -p tsconfig.json",
-    "build:release": "rimraf && tsc -p tsconfig.release.json",
+    "build": "rimraf dist && tsc -p tsconfig.release.json",
     "dev": "tsnd --respawn -r tsconfig-paths/register ./src/index.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest",

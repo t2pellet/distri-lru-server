@@ -1,7 +1,7 @@
-import { LRUCache } from '@/cache/lrucache';
+import { LRUCache } from '../src/cache/lrucache';
 import { Redis } from 'ioredis';
 import TestRedis from 'ioredis-mock';
-import { publisher } from '@/broker';
+import { publisher } from '../src/broker';
 
 const mockPublish = jest.spyOn(publisher, 'publish');
 
