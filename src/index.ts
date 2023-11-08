@@ -1,18 +1,16 @@
 // Using HTTP, might make load balancing easier
 
 import express, { Request, Response } from 'express';
-import dotenv from 'dotenv';
 import routes from './routes.js';
 import { ValidateError } from './validate.js';
+import { PUBLIC_PORT } from '@/env';
 
-dotenv.config();
-
+// Setup
 const app = express();
 
+// API
 app.use(express.json());
-
 app.use('/:key', routes);
-
 // Error Handling
 app.use((err: Error, _req: Request, res: Response) => {
   console.log('err:\n' + err.stack);
@@ -22,6 +20,7 @@ app.use((err: Error, _req: Request, res: Response) => {
   res.send({ error: { message: err.message, stack: err.stack } });
 });
 
-app.listen(process.env.PUBLIC_PORT, () => {
-  console.log('LRU Server is running at port: ' + process.env.PUBLIC_PORT);
+// Start
+app.listen(PUBLIC_PORT, () => {
+  console.log('LRU Server is running at port: ' + PUBLIC_PORT);
 });

@@ -1,5 +1,5 @@
 import express, { Request } from 'express';
-import cache from './lrucache.js';
+import cache from './cache/lrucache';
 import { body, param } from 'express-validator';
 import validate from './validate.js';
 
