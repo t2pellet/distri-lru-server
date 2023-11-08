@@ -1,7 +1,7 @@
 import express, { Request } from 'express';
-import cache from './cache/lrucache';
+import cache from './cache';
 import { body, param } from 'express-validator';
-import validate from './validate.js';
+import validate from './validate';
 
 const routes = express.Router();
 const innerRoutes = express.Router({ mergeParams: true });

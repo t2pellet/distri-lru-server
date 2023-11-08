@@ -1,8 +1,6 @@
-// Using HTTP, might make load balancing easier
-
 import express, { Request, Response } from 'express';
-import routes from './routes.js';
-import { ValidateError } from './validate.js';
+import routes from './routes';
+import { ValidateError } from './validate';
 import { PUBLIC_PORT } from '@/env';
 
 // Setup
