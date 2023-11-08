@@ -8,16 +8,16 @@ const innerRoutes = express.Router({ mergeParams: true });
 routes.use('/:key', param('key').isAlpha(), validate, innerRoutes);
 
 innerRoutes.get('/', async (req: Request, res) => {
-  const result = await cache.get(req.params.key);
-  res.status(200).send(result);
+  const value = await cache.get(req.params.key);
+  res.status(200).send({ value });
 });
-innerRoutes.post('/', body('value').isJSON(), async (req: Request, res) => {
-  await cache.put(req.params.key, req.body.value);
+innerRoutes.post('/', body('value').isJSON(), body('ttl').optional().isNumeric(), async (req: Request, res) => {
+  await cache.put(req.params.key, req.body.value, req.body.ttl);
   res.sendStatus(200);
 });
 innerRoutes.delete('/', async (req: Request, res) => {
-  await cache.del(req.params.key);
-  res.sendStatus(200);
+  const success = await cache.del(req.params.key);
+  res.status(200).send({ success });
 });
 
 export default routes;
